@@ -1,0 +1,13 @@
+{
+  "name": "nft-example",
+  "version": "0.1.0",
+  "description": "An NFT Example",
+  "author": "askvmwareblockchain@vmware.com",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.0"
+
+  },
+  "scripts": {
+    "deploy:concord": "truffle migrate --reset --network=concord"
+  }  
+}

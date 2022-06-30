@@ -1,0 +1,71 @@
+=== quick start up - don't PANIC :) :(===
+
+--- local concord ---
+% #start docker desktop program on macos
+% #no network needed ... because I already have the docker images?
+% cd /Users/chiangal/RamkiEthereum202107_MWC/vmwathena_blockchain/docker
+% rm -rf devdata
+% docker-compose -f docker-compose-eth.yml up -d # Starting docker_ethrpc3_1
+% docker ps # f65a287d3323   athena-docker-local.artifactory.eng.vmware.com/concord-core:0.0.0.0.4388
+% curl -X GET localhost:8545 # [{"name":"eth_accounts","returns":"array","para
+
+
+--- spring boot---
+
+% cd /Users/chiangal/MWC2022_NFT/SpringOnly/boot-ETH-VMBC-complete
+
+% ./mvnw spring-boot:run # DemoApplication started!!
+
+% #browser localhost:8083 # hello
+
+% curl localhost:8083/deploy # 0x6c004c92f82a9592c69d58d5f8b3a5ed06302e9c-or-
+% http://localhost:8083/deploy # 0x3a9acb671bea6943eef1123fb85dbfda54b51949
+
+% curl http:///localhost:8083/alice #0x784e2c4d95c9be66cb0b9cda5b39d72e7630bca8chiangal
+% http://localhost:8083/alice 
+# alice's address = 0x784e2c4d95c9be66cb0b9cda5b39d72e7630bca8
+
+% curl http:///localhost:8083/bob #0xf4d5b303a15b04d7c6b7510b24c62d393805b8d7chiangal
+% http://localhost:8083/bob
+# bob's address = 0xf4d5b303a15b04d7c6b7510b24c62d393805b8d7
+
+% curl http://localhost:8083/alice/balance # balance:0
+% http://localhost:8083/alice/balance # balance:0
+
+% http://localhost:8083/bob/balance # balance:0
+
+# alice mints 1st poem
+% curl -G http://localhost:8083/mint --data-urlencode "title=my first poem" \
+--data-urlencode "text=to be or not to be" --data-urlencode "author=alice"
+#TransactionReceipt{transactionHash='0xde642c10ed89d19e524346a12a2547c2287be306a2ec81cf0ba221e3322b562c
+
+# alice new balance
+% curl  http://localhost:8083/alice/balance 
+% http://localhost:8083/alice/balance 
+#balance:1 poemTitle:my first poem;poemBody:to be or not to be;author:alice;tokenId:0;
+
+# alice transfers to bob (0xf4...)
+% curl -X GET http://localhost:8083/alice/tokens/0/transfer\?transferToAddress\=0xf4d5b303a15b04d7c6b7510b24c62d393805b8d7
+# TransactionReceipt{transactionHash='0xa0e89469c3a5f3a5178683727c92d48ec8a68b870aa28547f9540f21fc3aed03
+
+%http://localhost:8083/bob/balance
+#balance:1 poemTitle:my first poem;poemBody:to be or not to be;author:alice;tokenId:0;
+
+--- error ---
+E1. if you see ConnectionRefusedError: [Errno 61] Connection refused
+   -> start Docker Desktop
+   
+
+
+=== Pinanta IPFS ===
+
+"To Be or Not To Be"
+https://gateway.pinata.cloud/ipfs/QmamtJLnfDYzfBLnTYuhnx6gcBQR3r25b61Ej6zCL7TDJN
+https://ipfs.io/ipfs/QmamtJLnfDYzfBLnTYuhnx6gcBQR3r25b61Ej6zCL7TDJN
+
+
+=== references ===
+
+https://confluence.eng.vmware.com/display/BLOC/VMBC+Ethereum+Starter-Kit
+
+

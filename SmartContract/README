@@ -1,0 +1,27 @@
+Note : this will show the steps to edit, truffle compile, web3j
+Java wrapper generation.
+
+
+vi contracts/DigitalArt.sol 
+
+# creates contracts, migrations, test, truffle-config.js
+truffle init # creates contracts, migrations, test, truffle-config.js
+
+#blow away migrations, stuff in contracts, 
+# update truffle-config.js to vesion "0.8.0"
+# vi DigitalArt.sol
+
+# creates build/contracts/*.json
+truffle compile # > Compiled successfully using:
+
+
+web3j generate truffle  --truffle-json build/contracts/DigitalArt.json --outputDir outdir -p com.example.demo # DigitalArt.java
+
+# File written to /Users/chiangal/MWC2022_NFT/vmbc-nft-demo/workshop-files/DigitalArt.tmp/outdir
+
+
+ls -l outdir/com/example/demo/DigitalArt.java
+
+
+ls -l /Users/chiangal/MWC2022_NFT/SpringOnly/boot-ETH-VMBC-complete/src/main/java/com/example/demo/DigitalArt.java
+
